@@ -218,7 +218,7 @@ Base URL is illustrative. The app uses two endpoints.
 
 ## 10) Running the Demo
 
-1. Create a `.env` in project root:
+1. Create a `.env` in project `assets/env/` folder:
    ```env
    OPEN_API_KEY=sk-****************
    ```
