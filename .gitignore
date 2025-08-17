@@ -55,3 +55,4 @@ android/.gradle/
 .vscode/
 # Secrets
 .env
+pubspec.lock
