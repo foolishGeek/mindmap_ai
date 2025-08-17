@@ -46,8 +46,8 @@ String mockForestJson = '''
           { "id": "t3_c2", "label": "Learning", "children": [] },
           { "id": "t3_c3", "label": "Travel",   "children": [] },
           { "id": "t3_c4", "label": "Finance",  "children": [
-          { "id": "t3_c4", "label": "Finance - 1",  "children": [] },
-          { "id": "t3_c4", "label": "Finance - 2",  "children": [] }
+          { "id": "t3_c4_a", "label": "Finance - 1",  "children": [] },
+          { "id": "t3_c4_b", "label": "Finance - 2",  "children": [] }
           ] }
         ]
       }
