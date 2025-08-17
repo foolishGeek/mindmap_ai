@@ -199,6 +199,18 @@ class _MindMapPageState extends State<MindMapPage>
 
   @override
   Widget build(BuildContext context) {
+    final media = MediaQuery.of(context);
+    final kbInset = media.viewInsets.bottom;
+    final safeBottom = media.padding.bottom;
+
+    final double bottomPad = 12 + (kbInset > 0 ? kbInset + 8 : safeBottom);
+
+    const double fabSize = 64; // your SVG button height/width
+    const double fabMargin = 16; // gap from edges
+    const double fabHalo = 20; // any glow/halo
+    const double rightSafe = fabSize + fabMargin + fabHalo;
+
+    final double barWidth = math.min(560, media.size.width - 16 - rightSafe);
     return AnimatedBuilder(
       animation: widget.vm,
       builder: (context, _) {
@@ -338,6 +350,7 @@ class _MindMapPageState extends State<MindMapPage>
         return Scaffold(
           appBar: const MindMapAppBar(),
           backgroundColor: Colors.white,
+          resizeToAvoidBottomInset: false,
           body: Stack(
             clipBehavior: Clip.none,
             children: [
@@ -347,22 +360,14 @@ class _MindMapPageState extends State<MindMapPage>
                 child: viewer,
               ),
               Positioned(
-                left: 1,
-                bottom: 16 +
-                    MediaQuery.of(context).viewPadding.bottom +
-                    MediaQuery.of(context).viewInsets.bottom,
-                child: SizedBox(
-                  width: math.min(
-                    MediaQuery.of(context).size.width -
-                        64, // 16px margins both sides
-                    560.0,
-                  ),
-                  child: AIPromptBar(
-                    controller: _promptController,
-                    isLoading: widget.vm.isGenerating,
-                    hintText: "Generate Mind Map...",
-                    onSubmit: (q) => widget.vm.generate(q),
-                  ),
+                left: 16, // bottom-left anchor
+                width: barWidth, // safe width (won’t touch the FAB)
+                bottom: bottomPad, // sits above keyboard or safe area
+                child: AIPromptBar(
+                  controller: _promptController,
+                  isLoading: widget.vm.isGenerating,
+                  hintText: "Generate Mind Map...",
+                  onSubmit: (q) => widget.vm.generate(q),
                 ),
               ),
               ValueListenableBuilder<UiEvent?>(
