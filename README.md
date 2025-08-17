@@ -323,19 +323,3 @@ widget.vm.toastEvent.addListener(() {
 
 ---
 
-## 🧭 Future ideas
-
-- Offline model (on-device LLM) fallback
-- Per-node CRUD endpoints (PATCH/POST/DELETE) when needed
-- Undo/redo & autosave
-- Collapsible subtrees
-
----
-
-## 📄 License
-
-Demo code for evaluation. Adapt freely for your team/project.
-
----
-
-If you need the README in a different voice or with inline screenshots, ping me and I’ll tailor it! 🚀
