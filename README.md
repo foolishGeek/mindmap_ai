@@ -280,6 +280,8 @@ Base URL is illustrative. The app uses two endpoints.
 
 ## 12) Notes on the Data Structure
 
+Rooted ordered forest represented as an adjacency‑list tree. Each node has id, label, and an ordered array of children (recursive). Forest = array of trees; each tree has a root node. Invariants: unique node IDs within a forest, children preserve order, parent→child edges only (no cycles).
+
 - **Forest**: ordered list of independent **trees** to be displayed one under another.
 - **Tree**: one **root** node; traversal is pre‑order for layout; connectors computed using measured child sub‑heights.
 - **Node**: `id` is a string; `label` is free text; `children` is an ordered list of nodes.
